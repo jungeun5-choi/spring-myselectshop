@@ -1,8 +1,12 @@
 package com.sparta.myselectshop.dto;
 
 import com.sparta.myselectshop.entity.Product;
+import com.sparta.myselectshop.entity.ProductFolder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -14,6 +18,8 @@ public class ProductResponseDto {
     private int lprice;
     private int myprice;
 
+    private List<FolderResponseDto> productFolderList = new ArrayList<>();
+
     public ProductResponseDto(Product product) {
         this.id = product.getId();
         this.title = product.getTitle();
@@ -21,5 +27,11 @@ public class ProductResponseDto {
         this.image = product.getImage();
         this.lprice = product.getLprice();
         this.myprice = product.getMyprice();
+
+        // 폴더 정보
+        for (ProductFolder productFolder : product.getProductFolderList()) {
+            // response dto로 변환하면서 가져온 정보를 add
+            productFolderList.add(new FolderResponseDto(productFolder.getFolder()));
+        }
     }
 }
