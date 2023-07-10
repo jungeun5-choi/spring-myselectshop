@@ -30,7 +30,7 @@ public class FolderService {
                 Folder folder = new Folder(folderName, user);
                 folderList.add(folder);
             } else {
-                throw new IllegalArgumentException("폴더명이 중복되었습니다.");
+                throw new IllegalArgumentException("중복된 폴더명을 제거해주세요! 폴더명: " + folderName);
             }
         }
 
@@ -53,7 +53,7 @@ public class FolderService {
     private Boolean isExistFolderName(String folderName, List<Folder> existFolderList) {
         // 기존 폴더 리스트에서 folder name 이 있는지?
         for (Folder existFolder : existFolderList) {
-            if(folderName.equals(existFolder.getName())) {
+            if (folderName.equals(existFolder.getName())) {
                 return true;
             }
         }
