@@ -36,7 +36,6 @@ public class FolderController {
 
     @ExceptionHandler({IllegalArgumentException.class})
     public ResponseEntity<RestApiException> handleException(IllegalArgumentException ex) {
-        System.out.println("FolderController.handleException");
         RestApiException restApiException = new RestApiException(ex.getMessage(), HttpStatus.BAD_REQUEST.value());
         return new ResponseEntity<>(
                 // HTTP body
